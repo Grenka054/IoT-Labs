@@ -1,9 +1,9 @@
 #include <ESP8266WiFi.h>
 
-const char* ssid = "Redmi 10C";//"Keenetic-7286";    //  Your Wi-Fi Name
-const char* password = "14243444";//"23wS4sfz";   // Wi-Fi Password
+const char* ssid = "Name";  // Your Wi-Fi Name
+const char* password = "Password";   // Wi-Fi Password
 
-int LED = 2;   // led connected to GPIO2 (D4)
+const int LED = 2;   // led connected to GPIO2 (D4)
 WiFiServer server(80);
 
 void setup()

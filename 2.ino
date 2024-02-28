@@ -23,8 +23,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-const char* ssid = "MERCUSYS_C53D";  // Your Wi-Fi Name
-const char* password = "55938204";   // Wi-Fi Password
+const char* ssid = "Name";  // Your Wi-Fi Name
+const char* password = "Password";   // Wi-Fi Password
 const char* serverIP = "192.168.1.105"; // IP адрес сервера
 const int LED = 2;
 const int BUTTON = 0;
