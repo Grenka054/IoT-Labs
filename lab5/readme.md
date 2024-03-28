@@ -74,6 +74,9 @@ listener 1883
 net stop mosquitto
 net start mosquitto
 ```
+
+Также стоит отключить Брандмауэр Windows.
+
 В крайнем случае, попробуйте Linux.
 
 Приложение, которое точно работает: *MQTT Dashboard Client*

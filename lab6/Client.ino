@@ -8,10 +8,10 @@ const char* password = "Password";
 
 // MQTT Broker
 const char *mqtt_broker = "mqtt.by";
-const char *topic = "user/login/trafficligth";
+const char *topic = "user/login/trafficlight";
 const char *mqtt_username = "login";
 const char *mqtt_password = "password";
-const int qos = 0; // QoS 2 не поддерживается
+const int qos = 1; // QoS 2 не поддерживается
 
 #define RED_LED D0
 #define YELLOW_LED D1
@@ -51,6 +51,19 @@ void loop() {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
+  static byte lastPayload[512];
+  static unsigned int lastLength = 0;
+
+  // Если новое сообщение больше предыдущего, то обновляем буфер
+  if (length > lastLength) {
+    lastPayload = (byte*) realloc(lastPayload, length);
+    lastLength = length;
+  }
+
+  // Копируем новое сообщение в буфер
+  memcpy(lastPayload, payload, length);
+
+  // Обрабатываем последнее сообщение
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");

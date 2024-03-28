@@ -7,10 +7,10 @@ const char* password = "Password";
 
 // MQTT Broker
 const char *mqtt_broker = "mqtt.by";
-const char *topic = "user/login/trafficligth";
+const char *topic = "user/login/trafficlight";
 const char *mqtt_username = "login";
 const char *mqtt_password = "password";
-const int qos = 0; // QoS 2 не поддерживается
+const int qos = 1; // QoS 2 не поддерживается
 
 #define RED_LED D0
 #define YELLOW_LED D1
@@ -63,6 +63,7 @@ void loop() {
 
   int stateIndex = millis() / 1000 % 30; // Переключение состояний каждую секунду
   State state = states[stateIndex];
+  stateIndex = (stateIndex + 15) % 30; // Сдвиг, чтобы состояния двух светофоров были противоположны
 
   Serial.printf("Red: %d, Yellow: %d, Green: %d\n", state.red, state.yellow, state.green);
   String json = "{";
