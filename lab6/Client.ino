@@ -51,19 +51,6 @@ void loop() {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-  static byte lastPayload[512];
-  static unsigned int lastLength = 0;
-
-  // Если новое сообщение больше предыдущего, то обновляем буфер
-  if (length > lastLength) {
-    lastPayload = (byte*) realloc(lastPayload, length);
-    lastLength = length;
-  }
-
-  // Копируем новое сообщение в буфер
-  memcpy(lastPayload, payload, length);
-
-  // Обрабатываем последнее сообщение
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
