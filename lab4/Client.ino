@@ -1,7 +1,7 @@
 // 1 плата и ПК
 // Плата-клиент
 // 1. Узнать ip компьютера с помощью ipconfig. Этот адрес вставить в клиентский код,
-// раскомментировать 39 строку,залить на плату.
+// раскомментировать 47 строку,залить на плату.
 // 2. Установить XAMPP. В папку ...\xampp\htdocs скопировать php-файлы. Запустить Apache-сервер.
 // 3. В браузере открыть http://localhost/state_visual.php. Это визуализация серверного 
 // светофора (не обновялется при остуствии GET-запросов, но можно спамить через Runner в интерфейсе Postman).
@@ -44,8 +44,8 @@ void loop() {
     WiFiClient client;
 
     // Выберите куда отправлять запрос в зависимости от задачи.
-    http.begin(client, String("http://") + host + "/state.php"); // Запрос на пк
-    // http.begin(client, String("http://") + host + "/state"); // Запрос на esp8266
+    // http.begin(client, String("http://") + host + "/state.php"); // Запрос на пк
+    http.begin(client, String("http://") + host + "/state"); // Запрос на esp8266
 
     int httpCode = http.GET();  //Send the request
 
